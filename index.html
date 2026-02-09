@@ -1,11 +1,582 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="William Shaughnessy — Paralegal based in New York City specializing in executive compensation, ERISA, securities regulation, and litigation support.">
+<meta property="og:title" content="William Shaughnessy | Paralegal">
+<meta property="og:description" content="Paralegal based in New York City specializing in executive compensation, ERISA, securities regulation, and litigation support.">
+<meta property="og:type" content="website">
+<title>William Shaughnessy | Paralegal</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0c1a2e;
+    --deep-blue: #152a4a;
+    --gold: #b8942b;
+    --gold-bright: #d4ad3a;
+    --gold-muted: #9a7d28;
+    --cream: #fcfaf5;
+    --paper: #ffffff;
+    --text: #1e1e1e;
+    --text-secondary: #4d4d4d;
+    --text-tertiary: #777;
+    --card-border: rgba(184, 148, 43, 0.15);
+    --card-shadow: rgba(12, 26, 46, 0.04);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'EB Garamond', 'Georgia', serif;
+    background: var(--cream);
+    color: var(--text);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── STICKY HEADER ── */
+  header {
+    background: var(--navy);
+    border-bottom: 3px solid var(--gold);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+  }
+
+  .header-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 20px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.03em;
+  }
+
+  .header-subtitle {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 2px;
+  }
+
+  .header-subtitle span {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--gold-bright);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .header-subtitle .dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(212, 173, 58, 0.5);
+    flex-shrink: 0;
+  }
+
+  .header-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-end;
+  }
+
+  .header-contact a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .header-contact a:hover { color: var(--gold-bright); }
+
+  .header-contact svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    opacity: 0.7;
+  }
+
+  /* ── PAGE ── */
+  .page {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 48px 60px;
+    background: var(--paper);
+    min-height: 100vh;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--deep-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    padding: 36px 0 10px;
+    border-bottom: 2px solid var(--gold);
+    margin-bottom: 22px;
+  }
+
+  /* ── CARDS (shared style) ── */
+  .card {
+    margin-bottom: 26px;
+    page-break-inside: avoid;
+    background: var(--paper);
+    border: 1px solid var(--card-border);
+    border-left: 3px solid var(--gold);
+    padding: 26px 32px;
+    box-shadow: 0 1px 4px var(--card-shadow);
+  }
+
+  /* ── EXPERIENCE ── */
+  .entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 4px 16px;
+    margin-bottom: 3px;
+  }
+
+  .entry-company {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .entry-dates {
+    font-size: 0.95rem;
+    color: var(--text-tertiary);
+    font-style: italic;
+    white-space: nowrap;
+  }
+
+  .entry-role {
+    font-size: 1.08rem;
+    font-weight: 600;
+    color: var(--deep-blue);
+    margin-bottom: 2px;
+  }
+
+  .entry-location {
+    font-size: 0.92rem;
+    color: var(--text-tertiary);
+    margin-bottom: 2px;
+  }
+
+  .entry-practice {
+    font-size: 0.92rem;
+    color: var(--gold-muted);
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+
+  .entry-details {
+    list-style: none;
+    padding: 0;
+  }
+
+  .entry-details li {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    padding: 3px 0 3px 18px;
+    position: relative;
+  }
+
+  .entry-details li::before {
+    content: '\2013';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  .entry-software {
+    font-size: 0.9rem;
+    color: var(--text-tertiary);
+    margin-top: 8px;
+    padding-left: 18px;
+    font-style: italic;
+  }
+
+  /* ── EDUCATION CARDS ── */
+  .edu-school {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--text);
+  }
+
+  .edu-years {
+    font-size: 0.92rem;
+    color: var(--text-tertiary);
+    font-style: italic;
+    margin-left: 8px;
+  }
+
+  .edu-degree {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-top: 2px;
+  }
+
+  .edu-degree a {
+    color: var(--deep-blue);
+    text-decoration: underline;
+    text-decoration-color: var(--gold);
+    text-underline-offset: 2px;
+    transition: color 0.2s;
+  }
+
+  .edu-degree a:hover {
+    color: var(--gold);
+  }
+
+  .edu-minor {
+    font-size: 0.95rem;
+    color: var(--text-tertiary);
+    margin-top: 1px;
+  }
+
+  /* ── CREDENTIALS LIST ── */
+  .creds-list { list-style: none; padding: 0; }
+
+  .creds-list li {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    padding: 4px 0 4px 18px;
+    position: relative;
+  }
+
+  .creds-list li::before {
+    content: '\2013';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    border-top: 3px solid var(--gold);
+  }
+
+  .footer-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 36px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .footer-thanks {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    font-style: italic;
+    max-width: 520px;
+    line-height: 1.4;
+  }
+
+  .footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    align-items: flex-end;
+  }
+
+  .footer-contact a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.92rem;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-contact a:hover { color: var(--gold-bright); }
+
+  .footer-contact svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    opacity: 0.6;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    header { position: static; box-shadow: none; }
+    header, footer { border-width: 2px; }
+    .page { padding: 0 0 20px; }
+    .section-title { padding-top: 18px; }
+    body { background: #fff; }
+    .card { box-shadow: none; border: 1px solid #ddd; border-left: 3px solid var(--gold); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .header-inner { padding: 16px 24px; flex-direction: column; align-items: flex-start; }
+    .header-contact { align-items: flex-start; }
+    header h1 { font-size: 1.5rem; }
+    .page { padding: 0 24px 48px; }
+    .card { padding: 22px 24px; }
+    .entry-header { flex-direction: column; }
+    .footer-inner { padding: 28px 24px; flex-direction: column; }
+    .footer-contact { align-items: flex-start; }
+  }
+</style>
 </head>
 <body>
-    <h1>Hello, World!</h1>
+
+<!-- ── STICKY HEADER ── -->
+<header>
+  <div class="header-inner">
+    <div>
+      <h1>William Shaughnessy</h1>
+      <div class="header-subtitle">
+        <span>Paralegal</span>
+        <div class="dot"></div>
+        <span>New York City, NY</span>
+      </div>
+    </div>
+    <div class="header-contact">
+      <a href="tel:7325356951" aria-label="Call William Shaughnessy">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-hidden="true"><title>Phone</title><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        (732) 535-6951
+      </a>
+      <a href="mailto:w.shaughnessy2@outlook.com" aria-label="Email William Shaughnessy">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-hidden="true"><title>Email</title><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        w.shaughnessy2@outlook.com
+      </a>
+      <a href="https://www.linkedin.com/in/wmshaughnessy" target="_blank" aria-label="LinkedIn profile">
+        <svg viewBox="0 0 24 24" fill="currentColor" role="img" aria-hidden="true"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        linkedin.com/in/wmshaughnessy
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ── CONTENT ── -->
+<div class="page">
+
+  <h2 class="section-title">Experience</h2>
+
+  <div class="card">
+    <div class="entry-header">
+      <span class="entry-company">Fried, Frank, Harris, Shriver &amp; Jacobson, LLP</span>
+      <span class="entry-dates">October 2024 – Present</span>
+    </div>
+    <div class="entry-role">Paralegal</div>
+    <div class="entry-location">New York, NY</div>
+    <div class="entry-practice">Executive Compensation / ERISA</div>
+    <ul class="entry-details">
+      <li>Drafted and revised public filings (Form 3, Form 4, Form D, 83(b) elections) for equity awards and investments to ensure compliance with securities regulations and corporate governance requirements</li>
+      <li>Maintained direct communication with executives, employees, and clients regarding queries, matter administration, and document execution</li>
+      <li>Prepared and updated Excel-based capitalization tables to monitor outstanding equity issuances for stock options, profits interest, and cash/equity-based compensation plans</li>
+      <li>Proofread and prepared legal documents and agreements for accuracy and completeness</li>
+      <li>Structured and formatted legal documents, tables, and exhibits for distribution</li>
+      <li>Researched public company equity and employment documents using EDGAR and enrolled client accounts in EDGAR Next</li>
+      <li>Maintained comprehensive records, monitored outstanding documentation, and coordinated processes with attorneys</li>
+      <li>Created and maintained Microsoft Visual Basic for Applications (VBA) macros</li>
+      <li>Utilized and improved firm databases to organize, update, and retrieve critical documents and information</li>
+      <li>Supported attorneys on demand and beyond regular work hours, both in-house and at external locations</li>
+    </ul>
+    <div class="entry-software">Software: InTapp, Microsoft Office (Outlook, Excel, Word, Visio), Microsoft VBA, DocuSign, Kofax Power PDF, iManage, Litera, Chrome River</div>
+  </div>
+
+  <div class="card">
+    <div class="entry-header">
+      <span class="entry-company">Pillsbury Winthrop Shaw Pittman LLP</span>
+      <span class="entry-dates">May 2022 – October 2024</span>
+    </div>
+    <div class="entry-role">Practice Assistant</div>
+    <div class="entry-location">New York, NY</div>
+    <div class="entry-practice">State &amp; Local Tax (SALT) · Litigation · Corporate · Securities · Insolvency &amp; Restructuring · Finance</div>
+    <ul class="entry-details">
+      <li>Modeled the tax impact of issues (utilizing Excel) from audit work papers, and entity relationship diagrams</li>
+      <li>Drafted Board of Directors meeting minutes, case briefs, correspondence, legal forms, and new business memos</li>
+      <li>Edited and proofread attorney diary entries, pre-bills, legal documents, and Bluebook citations</li>
+      <li>Maintained client equity (utilizing Carta), calendaring, electronic and physical files, and case status logs</li>
+      <li>Organized and verified closing sets, litigation and research binders, and client documents</li>
+      <li>Prepared expense reports, domestic and international mailings, and indexes of client material</li>
+      <li>Supported attorneys on demand and beyond regular work hours, both in-house and at external locations</li>
+      <li>Participated in Pro Bono research opportunities</li>
+    </ul>
+    <div class="entry-software">Software: Westlaw, Checkpoint Edge, InTapp, Aderant Expert, Innova, Microsoft Office (Outlook, Excel, PowerPoint, Word, Visio), Adobe Acrobat, NetDocuments, Litera, Carta, Chrome River</div>
+  </div>
+
+  <div class="card">
+    <div class="entry-header">
+      <span class="entry-company">Corbally, Gartland and Rappleyea, LLP</span>
+      <span class="entry-dates">January 2022 – May 2022</span>
+    </div>
+    <div class="entry-role">Generalist Intern</div>
+    <div class="entry-location">Poughkeepsie, NY</div>
+    <ul class="entry-details">
+      <li>Delivered legal documents to individuals, courts, and the clerk's office</li>
+      <li>Maintained case files using the LEAP Legal Management Software</li>
+      <li>Oversaw the front desk for visitors, sorted mail and routed phone calls to relevant departments</li>
+      <li>Prepared and edited closing sets, legal documents, letters, memos, and emails</li>
+      <li>Completed general administrative tasks including photocopying, faxing, transcribing, and scanning</li>
+    </ul>
+    <div class="entry-software">Software: LEAP Legal Management Software, Microsoft Office, Google Workspace</div>
+  </div>
+
+  <div class="card">
+    <div class="entry-header">
+      <span class="entry-company">Dutchess County Public Defender's Office</span>
+      <span class="entry-dates">June 2021 – December 2021</span>
+    </div>
+    <div class="entry-role">Intake &amp; Discovery Intern</div>
+    <div class="entry-location">Poughkeepsie, NY</div>
+    <div class="entry-practice">Criminal and Family Law Units</div>
+    <ul class="entry-details">
+      <li>Created and closed case files for criminal/family court cases</li>
+      <li>Calculated income and assets to determine eligibility for legal services</li>
+      <li>Conducted in-depth factual interviews to establish the background of a case</li>
+      <li>Recorded and kept information on interviews and meetings with clients</li>
+      <li>Utilized the automated case management system (PDCMS) to open, manage, and close legal cases</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="entry-header">
+      <span class="entry-company">Marist College Center for Civic Engagement</span>
+      <span class="entry-dates">August 2018 – May 2022</span>
+    </div>
+    <div class="entry-role">Program Coordinator</div>
+    <div class="entry-location">Poughkeepsie, NY</div>
+    <ul class="entry-details">
+      <li>Maintained databases and interpersonal relationships for Faculty Fellows</li>
+      <li>Analyzed survey data and community partner outreach</li>
+      <li>Implemented a program to streamline students needing a gap year program</li>
+      <li>Planned and executed a conference for students interested in non-profits as a career</li>
+      <li>Completed special projects for the Director of the CCEL and Dean of the School of Liberal Arts</li>
+      <li>Performed general office and administrative duties</li>
+    </ul>
+    <div class="entry-software">Software: Google Workspace, Microsoft Office, Canva, Profile Analytics (Instagram, LinkedIn)</div>
+  </div>
+
+  <div class="card">
+    <div class="entry-header">
+      <span class="entry-company">Rebuilding Together Dutchess</span>
+      <span class="entry-dates">August 2019 – December 2019</span>
+    </div>
+    <div class="entry-role">Branding and Outreach Strategy Intern</div>
+    <div class="entry-location">Dutchess County, NY</div>
+    <ul class="entry-details">
+      <li>Translated the mission and vision of the organization into a corresponding outreach strategy</li>
+      <li>Expanded the organization's reach through creative, on-brand campaigns</li>
+      <li>Built brand awareness through impact data and experiences</li>
+      <li>Designed and implemented the 2020 Sponsorship Toolbox, a publication listing all volunteer and donation opportunities</li>
+    </ul>
+    <div class="entry-software">Software: Google Workspace, Microsoft Office, Canva, Profile Analytics, Adobe Creative Cloud (Photoshop, Illustrator, InDesign)</div>
+  </div>
+
+  <div class="card">
+    <div class="entry-header">
+      <span class="entry-company">Mechanical Contractors Association of New Jersey (MCANJ)</span>
+      <span class="entry-dates">April 2017 – February 2021</span>
+    </div>
+    <div class="entry-role">Administrative Assistant</div>
+    <div class="entry-location">Springfield, NJ</div>
+    <ul class="entry-details">
+      <li>Implemented an in-house electronic database system for the National Certified Pipe Welding Bureau, New Jersey Chapter</li>
+      <li>Maintained New Jersey certified welders files (over 850 welders)</li>
+      <li>Handled special work assignments from the Finance/Office Manager and Education and Executive Directors</li>
+      <li>Troubleshot issues with computers and electronic equipment</li>
+      <li>Implemented an in-house electronic database system for files kept off-premises</li>
+      <li>Enhanced and maintained an electronic and hard copy filing system</li>
+      <li>General clerical duties including open, sort and distribute mail, faxing, filing, photocopying, and answering telephones</li>
+    </ul>
+    <div class="entry-software">Software: Google Workspace, Microsoft Office, Canva, NCPWB Database, LexisNexis</div>
+  </div>
+
+  <h2 class="section-title">Education</h2>
+
+  <div class="card">
+    <span class="edu-school">Marist College</span>
+    <span class="edu-years">2018 – 2022</span>
+    <div class="edu-degree">Bachelor of Arts – Political Science</div>
+    <div class="edu-minor">Minor in Communications: Public Relations</div>
+  </div>
+
+  <div class="card">
+    <span class="edu-school">Marist College</span>
+    <span class="edu-years">August 2019 – December 2021</span>
+    <div class="edu-degree">Certificate – Paralegal (<a href="https://www.americanbar.org/groups/paralegals/paralegal-resource-directory/?q=marist&hl=on&hl.preserveMulti=true&hl.snippets=5&hl.fragsize=0&hl.fl=title%2Cdescription&wt=json&start=0&rows=10&defType=edismax&mm=75%25&fl=id%3Aid%2Cscore%3Ascore%2Ctitle%3Atitle_s%2Cdescription%3Adescription_txt_en%2Curl%3Aurl_s%2CpublishedDate%3Apublished_date_dt%2CPublishing%20Entity%3APublishing_Entity%2CTopics%3ATopics%2CresourceType%3Asling_resource_type_s%2CcqTags%3Acq_tags%2CisProduct%3Ais_product_b%2Csku%3Aproduct_id_s%2CchildProducts%3Achild_product_ids_ss%2ClistPrice%3Alist_price_s%2CproductType%3Aproduct_class_code_description_s%2Cimagery%3Aimage_url_ss%2Cauthor%3Aauthor_ss&json.facet=%7B%22City%22%3A%7B%22type%22%3A%22terms%22%2C%22field%22%3A%22CHILDREN%22%2C%22limit%22%3A100%2C%22numBuckets%22%3Atrue%7D%2C%22State%22%3A%7B%22type%22%3A%22terms%22%2C%22field%22%3A%22SOLO%22%2C%22limit%22%3A100%2C%22numBuckets%22%3Atrue%7D%2C%22Institution%20Type%22%3A%7B%22type%22%3A%22terms%22%2C%22field%22%3A%22INTL%22%2C%22limit%22%3A100%2C%22numBuckets%22%3Atrue%7D%2C%22Type%20of%20Degree%22%3A%7B%22type%22%3A%22terms%22%2C%22field%22%3A%22CIVILRIGHT%22%2C%22limit%22%3A100%2C%22numBuckets%22%3Atrue%7D%2C%22publishing_entity_tags%22%3A%7B%22type%22%3A%22terms%22%2C%22field%22%3A%22cq_tags%22%2C%22prefix%22%3A%22publishing_entity%3A%22%2C%22limit%22%3A100%7D%7D&facet=true&sort=score%20DESC" target="_blank">ABA Approved Program</a>)</div>
+  </div>
+
+  <div class="card">
+    <span class="edu-school">Arthur L. Johnson High School</span>
+    <span class="edu-years">2014 – 2018</span>
+    <div class="edu-degree">High School Diploma</div>
+  </div>
+
+  <h2 class="section-title">Credentials &amp; Leadership</h2>
+
+  <div class="card">
+    <ul class="creds-list">
+      <li>Carta – Certified Expert (2023)</li>
+      <li>Paralegal Certificate (2022)</li>
+      <li>Marist Student Government Association, Chief Communications Officer (2019 – 2021)</li>
+      <li>Kiwanis International Key Club, Lieutenant Governor (2017 – 2018)</li>
+      <li>Boy Scouts of America, Eagle Scout – Troop 145, Clark, New Jersey (2017)</li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-thanks">
+      Thank you for visiting my site! Please reach out if you have any questions or would like to connect. 
+    </div>
+    <div class="footer-contact">
+      <a href="tel:7325356951" aria-label="Call William Shaughnessy">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-hidden="true"><title>Phone</title><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        (732) 535-6951
+      </a>
+      <a href="mailto:w.shaughnessy2@outlook.com" aria-label="Email William Shaughnessy">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-hidden="true"><title>Email</title><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        w.shaughnessy2@outlook.com
+      </a>
+      <a href="https://www.linkedin.com/in/wmshaughnessy" target="_blank" aria-label="LinkedIn profile">
+        <svg viewBox="0 0 24 24" fill="currentColor" role="img" aria-hidden="true"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        linkedin.com/in/wmshaughnessy
+      </a>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
