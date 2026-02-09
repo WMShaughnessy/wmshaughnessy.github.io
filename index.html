@@ -342,15 +342,76 @@
   }
 
   /* ── RESPONSIVE ── */
+
+  /* Tablet */
+  @media (max-width: 900px) {
+    .header-inner { padding: 18px 32px; }
+    .page { padding: 0 32px 56px; }
+    .footer-inner { padding: 32px 32px; }
+  }
+
+  /* Small tablet / large phone */
   @media (max-width: 768px) {
-    .header-inner { padding: 16px 24px; flex-direction: column; align-items: flex-start; }
+    .header-inner { padding: 16px 24px; flex-direction: column; align-items: flex-start; gap: 12px; }
     .header-contact { align-items: flex-start; }
     header h1 { font-size: 1.5rem; }
+    .header-subtitle { gap: 8px; margin-top: 1px; }
+    .header-subtitle span { font-size: 0.82rem; letter-spacing: 0.1em; }
+    .header-contact a { font-size: 0.84rem; gap: 7px; }
+    .header-contact svg { width: 13px; height: 13px; }
+
     .page { padding: 0 24px 48px; }
     .card { padding: 22px 24px; }
     .entry-header { flex-direction: column; }
-    .footer-inner { padding: 28px 24px; flex-direction: column; }
+    .entry-company { font-size: 1.2rem; }
+    .entry-details li { font-size: 0.95rem; }
+
+    .footer-inner { padding: 28px 24px; flex-direction: column; gap: 20px; }
+    .footer-thanks { font-size: 1.25rem; max-width: 100%; }
     .footer-contact { align-items: flex-start; }
+    .footer-contact a { font-size: 0.86rem; }
+  }
+
+  /* Phone */
+  @media (max-width: 480px) {
+    .header-inner { padding: 14px 18px; gap: 10px; }
+    header h1 { font-size: 1.3rem; }
+    .header-subtitle span { font-size: 0.75rem; }
+    .header-subtitle .dot { width: 3px; height: 3px; }
+    .header-contact { gap: 5px; }
+    .header-contact a { font-size: 0.8rem; gap: 6px; }
+    .header-contact svg { width: 12px; height: 12px; }
+
+    .page { padding: 0 18px 40px; }
+    .section-title { font-size: 1.1rem; letter-spacing: 0.12em; padding: 28px 0 8px; margin-bottom: 18px; }
+    .card { padding: 18px 18px; margin-bottom: 20px; }
+    .entry-company { font-size: 1.1rem; }
+    .entry-role { font-size: 1rem; }
+    .entry-dates { font-size: 0.88rem; }
+    .entry-details li { padding-left: 14px; font-size: 0.92rem; }
+    .entry-software { font-size: 0.84rem; padding-left: 14px; }
+    .edu-school { font-size: 1.05rem; }
+
+    .footer-inner { padding: 24px 18px; gap: 16px; }
+    .footer-thanks { font-size: 1.15rem; }
+    .footer-contact { gap: 6px; }
+    .footer-contact a { font-size: 0.82rem; gap: 6px; }
+    .footer-contact svg { width: 12px; height: 12px; }
+  }
+
+  /* Very small phone */
+  @media (max-width: 360px) {
+    .header-inner { padding: 12px 14px; }
+    header h1 { font-size: 1.15rem; }
+    .header-subtitle { flex-wrap: wrap; gap: 4px 8px; }
+    .header-contact a { font-size: 0.76rem; }
+
+    .page { padding: 0 14px 36px; }
+    .card { padding: 16px 14px; }
+
+    .footer-inner { padding: 20px 14px; }
+    .footer-thanks { font-size: 1.05rem; }
+    .footer-contact a { font-size: 0.78rem; }
   }
 </style>
 </head>
@@ -559,7 +620,7 @@
 <footer>
   <div class="footer-inner">
     <div class="footer-thanks">
-      Thank you for visiting my site! Please reach out if you have any questions or would like to connect. 
+      Thank you for visiting my site! Please reach out if you have any questions or would like to connect.
     </div>
     <div class="footer-contact">
       <a href="tel:7325356951" aria-label="Call William Shaughnessy">
